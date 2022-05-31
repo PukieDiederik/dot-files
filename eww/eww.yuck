@@ -1,0 +1,103 @@
+; Variables
+; - Workspace
+(defvar cur_workspace "1")
+(defvar ws_icons "[\"\",\"\",\"\",\"\",\"\"]")
+
+; - Scripts
+(defvar s_workspace "./scripts/workspace")
+(defpoll time	:interval "5s"
+				`date "+%I:%M %p"`)
+
+(defwindow bar
+	:class		"bar"
+	:monitor 	0
+	:geometry	(geometry
+					:x			"0%"
+					:y			"1%"
+					:width		"99%"
+					:height 	"32px"
+					:anchor		"top center")
+	:stacking	"fg"
+	:reserve	(struts
+					:distance	"42"
+					:side		"top")
+	:windowtype	"dock"
+	:wm-ignore	false
+	(alignment)
+)
+
+; Alignment
+
+(defwidget alignment []
+	(box
+		:orientation	"horizontal"
+		(left)
+		(center)
+		(right))
+)
+
+
+(defwidget left []
+	(box
+		:orientation	"horizontal"
+		:class			"bar-modules-left"
+		:space-evenly	false
+		:halign			"start"
+		(w_mgr_workspace))
+)
+
+(defwidget center []
+	(box	
+		:orientation	"horizontal"
+		:space-evenly	false
+		:halign			"center")
+)
+
+(defwidget right []
+	(box	
+		:orientation	"horizontal"
+		:class			"bar-modules-right"
+		:space-evenly	false
+		:halign			"end"
+		(w_time))
+)
+
+
+; Widgets
+(defwidget w_time []
+	(box
+		:orientation	"horizontal"
+		:halign			"center"
+		time)
+)
+
+(defwidget test-widget [text]
+	(box
+		:orientation	"horizontal"
+		:halign			"center"
+		text)
+)
+
+(defwidget w_mgr_workspace []
+	(box
+		:orientation	"horizontal"
+		(b_ch_workspace	:id "1")
+		(b_ch_workspace	:id "2")
+		(b_ch_workspace	:id "3")
+		(b_ch_workspace	:id "4")
+		(b_ch_workspace	:id "5"))
+)
+
+; - Changing workspace widgets
+(defwidget b_ch_workspace [id]
+	(eventbox
+		:class "workspace-event"
+		:cursor "pointer"
+		:valign "center"
+		:vexpand false
+		:hexpand false
+		:width "22"
+		:height "22"
+		:onclick "echo \"switch_workspace(${id})\" | awesome-client"
+		{ws_icons[id - 1]})
+)

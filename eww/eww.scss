@@ -1,0 +1,59 @@
+// nord-theme color scheme
+// - regular
+$c_nord0 :	#2e3440;
+$c_nord1 :	#3b4252;
+$c_nord2 :	#434c5e;
+$c_nord3 :	#4c566a;
+
+// - Snow storm
+$c_nord4 :	#d8dee9;
+$c_nord5 :	#e5e9f0;
+$c_nord6 :	#eceff4;
+
+// - Frost
+$c_nord7 :	#8fbcbb;
+$c_nord8 :	#88c0d0;
+$c_nord9 :	#81a1c1;
+$c_nord10:	#5e81ac;
+
+// - Aurora
+$c_nord11:	#bf616a;
+$c_nord12:	#d08770;
+$c_nord13:	#ebcb8b;
+$c_nord14:	#a3be8c;
+$c_nord15:	#b48ead;
+
+// regular theming
+*{
+	all: unset;
+}
+
+.bar{
+	background-color:	$c_nord0;
+	color:				$c_nord6;
+	border-radius:		16px;
+}
+
+// aligment
+.bar-modules-left
+{
+	padding-left: 5px;
+}
+
+.bar-modules-right
+{
+	padding-right: 7px;
+}
+
+
+// workspace management
+.workspace-event{
+	color:$c_nord6;
+	font-size: 20px;
+	border-radius: 50%;
+	transition: 0.2s;
+}
+
+.workspace-event:hover{
+	background-color: $c_nord2;
+}

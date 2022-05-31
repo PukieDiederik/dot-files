@@ -1,0 +1,23 @@
+#!/bin/sh
+
+cw=$(eww get cur_workspace)
+
+ic_1="";
+ic_2="";
+ic_3="";
+ic_4="";
+ic_5="";
+
+if [[ $cw == "1" ]]; then
+	ic_1="";
+elif [[ $cw == "2" ]]; then
+	ic_2="";
+elif [[ $cw == "3" ]]; then
+	ic_3="";
+elif [[ $cw == "4" ]]; then
+	ic_4="";
+elif [[ $cw == "5" ]]; then
+	ic_5="";
+fi
+
+eww update ws_icons="[\"$ic_1\", \"$ic_2\", \"$ic_3\", \"$ic_4\", \"$ic_5\"]"
